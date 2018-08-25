@@ -36,4 +36,18 @@ public class ContatoDAO {
         }
         
     }
+    
+    public void Delete(Contato contato)throws SQLException, ClassNotFoundException{
+        Connection conn = null;
+        Statement st = null;
+        try{
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            st.execute("delete from contato were nome = '" + contato.getNome() + "';");
+        }catch(SQLException e) {
+                throw e;
+            } finally {
+                closeResources(conn, st);
+            }
+    }
 }
