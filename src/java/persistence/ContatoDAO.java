@@ -50,4 +50,18 @@ public class ContatoDAO {
                 closeResources(conn, st);
             }
     }
+    
+    public void Find(Contato contato)throws SQLException, ClassNotFoundException{
+        Connection conn = null;
+        Statement st = null;
+        try{
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            st.execute("SELECT email FROM contato WHERE nome = '" + contato.getNome() + "'");
+        }catch(SQLException e) {
+                throw e;
+            } finally {
+                closeResources(conn, st);
+            }
+    }
 }
