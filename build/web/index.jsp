@@ -12,12 +12,12 @@
     <body>
 
     <h1>Cadastro de Contatos</h1>
-    <form action="FrontController?action=GravarContato" method="post">
-      Entre com seu nome
-      <input type="text" name="textNome"/><br/>
-      Entre com seu email
-      <input type="text" name="textEmail"/><br/>
-      <input type="submit"/>
-    </form>
+    <ul style="list-style: nome">
+        <li><a href="GravarContato.jsp">Gravar Contato</a></li>
+        <li><a href="LerContato.jsp">Ler Contato</a></li>
+        <li><a href="ApagarContato.jsp">Apagar Contato</a></li>
+        <li><a href="GravarEmpresa.jsp">Gravar Empresa</a></li>
+    </ul>
+    
     </body>
 </html>

@@ -8,6 +8,8 @@ package action;
 import controller.Action;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Contato;
@@ -25,14 +27,16 @@ public class LerContatoAction implements Action{
         if(nome.equals("")) {
            response.sendRedirect("index.jsp");
         } else {
-            Contato contato = new Contato(nome, null);
             try{
-                ContatoDAO.getInstance().Find(contato);
-                response.sendRedirect("contatoSucesso.jsp");
+                request.setAttribute("contato", ContatoDAO.getInstance().Find(nome));
+                RequestDispatcher view = request.getRequestDispatcher("/ExibirContato.jsp");
+                view.forward(request, response);
             }catch(SQLException ex){
                 response.sendRedirect("contatoErro.jsp");
                 ex.printStackTrace();
             }catch(ClassNotFoundException ex){
+                ex.printStackTrace();
+            } catch (ServletException ex) {
                 ex.printStackTrace();
             }
         }

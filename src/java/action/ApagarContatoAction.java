@@ -25,9 +25,9 @@ public class ApagarContatoAction implements Action{
         if(nome.equals("")) {
            response.sendRedirect("index.jsp");
         } else {
-            Contato contato = new Contato(nome, null);
+            //Contato contato = new Contato(nome, null);
             try{
-                ContatoDAO.getInstance().Delete(contato);
+                ContatoDAO.getInstance().Delete(nome);
                 response.sendRedirect("contatoSucesso.jsp");
             }catch(SQLException ex){
                 response.sendRedirect("contatoErro.jsp");

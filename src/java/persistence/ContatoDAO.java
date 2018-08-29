@@ -1,6 +1,7 @@
 package persistence;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Contato;
@@ -37,13 +38,13 @@ public class ContatoDAO {
         
     }
     
-    public void Delete(Contato contato)throws SQLException, ClassNotFoundException{
+    public void Delete(String nome)throws SQLException, ClassNotFoundException{
         Connection conn = null;
         Statement st = null;
         try{
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("delete from contato were nome = '" + contato.getNome() + "';");
+            st.execute("delete from contato where nome = '" + nome + "'");
         }catch(SQLException e) {
                 throw e;
             } finally {
@@ -51,17 +52,24 @@ public class ContatoDAO {
             }
     }
     
-    public void Find(Contato contato)throws SQLException, ClassNotFoundException{
+    public Contato Find(String nome)throws SQLException, ClassNotFoundException{
         Connection conn = null;
         Statement st = null;
+        ResultSet rs = null;
+        Contato contato = new Contato();
         try{
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            st.execute("SELECT email FROM contato WHERE nome = '" + contato.getNome() + "'");
+            rs = st.executeQuery("SELECT nome, email FROM contato WHERE nome = '" + nome + "'");
+            while(rs.next()){
+                contato.setEmail(rs.getString("email"));
+                contato.setNome(rs.getString("nome"));
+            }
         }catch(SQLException e) {
                 throw e;
             } finally {
                 closeResources(conn, st);
             }
+        return contato;
     }
 }

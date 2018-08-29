@@ -25,12 +25,13 @@ public class GravarEmpresaAction implements Action{
     }
 
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String codigo = request.getParameter("textCodigo");
         String nome = request.getParameter("textNome");
-        
+        int id = Integer.parseInt(codigo);
         if(nome.equals("")) {
            response.sendRedirect("index.jsp");
         } else {
-            Empresa empresa = new Empresa(nome);
+            Empresa empresa = new Empresa(id, nome);
             try{
                 EmpresaDAO.getInstance().save(empresa);
                 response.sendRedirect("empreseSucesso.jsp");

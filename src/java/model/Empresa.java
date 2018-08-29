@@ -10,10 +10,21 @@ package model;
  * @author claudio
  */
 public class Empresa {
+    private int codigo;
     private String nome;
 
-    public Empresa(String nome) {
+    public Empresa(int codigo, String nome) {
+        this.codigo = codigo;
         this.nome = nome;
+    }
+    
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
 
