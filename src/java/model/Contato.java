@@ -3,10 +3,20 @@ package model;
 public class Contato {
     private String nome;
     private String email;
+    private int codigoEmpresa;
 
-    public Contato(String nome, String email) {
+    public Contato(String nome, String email, int codigoEmpresa) {
         this.nome = nome;
         this.email = email;
+        this.codigoEmpresa = codigoEmpresa;
+    }
+
+    public int getCodigoEmpresa() {
+        return codigoEmpresa;
+    }
+
+    public void setCodigoEmpresa(int codigoEmpresa) {
+        this.codigoEmpresa = codigoEmpresa;
     }
 
     public Contato() {

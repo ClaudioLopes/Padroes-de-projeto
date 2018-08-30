@@ -18,6 +18,14 @@
           <input type="text" name="textNome"/><br/>
           Entre com seu email
           <input type="text" name="textEmail"/><br/>
+          Selecione a empresa
+          <select name="textEmpresa" class="frmCmb1">
+              <option value="empresas">Empresas</option>
+              <c:forEach var="empresa" items="${empresa}">
+                <option value=${empresa.codigo}>
+              </option>
+             </c:forEach>
+          </select><br/>
           <input type="submit"/>
         </form>
     </body>

@@ -34,7 +34,7 @@ public class GravarEmpresaAction implements Action{
             Empresa empresa = new Empresa(id, nome);
             try{
                 EmpresaDAO.getInstance().save(empresa);
-                response.sendRedirect("empreseSucesso.jsp");
+                response.sendRedirect("empresaSucesso.jsp");
             }catch(SQLException ex){
                 response.sendRedirect("empreseErro.jsp");
                 ex.printStackTrace();

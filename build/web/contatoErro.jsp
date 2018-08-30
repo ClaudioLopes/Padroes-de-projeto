@@ -6,6 +6,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Algum erro ocorreu durante a gravação do contato</h1>
+        <h1>Algum erro ocorreu</h1>
     </body>
 </html>

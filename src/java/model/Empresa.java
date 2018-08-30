@@ -18,7 +18,11 @@ public class Empresa {
         this.nome = nome;
     }
     
+    public Empresa(){
+        
+    }
 
+    
     public int getCodigo() {
         return codigo;
     }

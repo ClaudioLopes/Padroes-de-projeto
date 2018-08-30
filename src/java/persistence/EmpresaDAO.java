@@ -6,6 +6,7 @@
 package persistence;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Contato;
@@ -40,7 +41,28 @@ public class EmpresaDAO {
             if(conn != null) conn.close();
         }catch(SQLException e){
             
-        }
-        
+        }        
+    }
+    
+    public Empresa Find()throws SQLException, ClassNotFoundException{
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        Empresa empresa = new Empresa();
+        try{
+            conn = DatabaseLocator.getInstance().getConnection();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT codigo, nome FROM empresa");
+            while(rs.next()){
+                int i = Integer.parseInt(rs.getString("codigo"));
+                empresa.setCodigo(i);
+                empresa.setNome(rs.getString("nome"));
+            }
+        }catch(SQLException e) {
+                throw e;
+            } finally {
+                closeResources(conn, st);
+            }
+        return empresa;
     }
 }

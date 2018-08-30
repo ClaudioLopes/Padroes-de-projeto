@@ -6,10 +6,8 @@
         <group>
             <file>file:/home/claudio/Documents/Padroes-de-projeto/src/java/action/GravarContatoAction.java</file>
             <file>file:/home/claudio/Documents/Padroes-de-projeto/src/java/persistence/ContatoDAO.java</file>
-            <file>file:/home/claudio/Documents/Padroes-de-projeto/web/WEB-INF/web.xml</file>
-            <file>file:/home/claudio/Documents/Padroes-de-projeto/web/index.jsp</file>
-            <file>file:/home/claudio/Documents/Padroes-de-projeto/src/java/controller/ActionFactory.java</file>
-            <file>file:/home/claudio/Documents/Padroes-de-projeto/src/java/controller/FrontController.java</file>
+            <file>file:/home/claudio/Documents/Padroes-de-projeto/web/GravarContato.jsp</file>
+            <file>file:/home/claudio/Documents/Padroes-de-projeto/src/java/model/Contato.java</file>
         </group>
     </open-files>
 </project-private>
