@@ -31,17 +31,12 @@ public class GravarContatoAction implements Action{
         } else {
             Contato contato = new Contato(nome, email, id);
             try{
-                request.setAttribute("empresa", EmpresaDAO.getInstance().Find());
-                RequestDispatcher view = request.getRequestDispatcher("/GravarContato.jsp");
-                view.forward(request, response);
                 ContatoDAO.getInstance().save(contato);
                 response.sendRedirect("contatoSucesso.jsp");
             }catch(SQLException ex){
                 response.sendRedirect("contatoErro.jsp");
                 ex.printStackTrace();
             }catch(ClassNotFoundException ex){
-                ex.printStackTrace();
-            } catch (ServletException ex) {
                 ex.printStackTrace();
             }
         }

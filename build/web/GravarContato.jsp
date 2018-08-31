@@ -22,7 +22,7 @@
           <select name="textEmpresa" class="frmCmb1">
               <option value="empresas">Empresas</option>
               <c:forEach var="empresa" items="${empresa}">
-                <option value=${empresa.codigo}>
+                <option value="${empresa.codigo}">
               </option>
              </c:forEach>
           </select><br/>

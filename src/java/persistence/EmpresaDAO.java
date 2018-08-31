@@ -9,7 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.Contato;
+import java.util.ArrayList;
+import java.util.List;
 import model.Empresa;
 
 
@@ -44,25 +45,26 @@ public class EmpresaDAO {
         }        
     }
     
-    public Empresa Find()throws SQLException, ClassNotFoundException{
+    public List<Empresa> Find() throws SQLException, ClassNotFoundException{
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
-        Empresa empresa = new Empresa();
+        List<Empresa> empresas = new ArrayList<Empresa>();
         try{
             conn = DatabaseLocator.getInstance().getConnection();
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT codigo, nome FROM empresa");
+            rs = st.executeQuery("SELECT * FROM empresa");
             while(rs.next()){
-                int i = Integer.parseInt(rs.getString("codigo"));
-                empresa.setCodigo(i);
+                Empresa empresa = new Empresa();
+                empresa.setCodigo(rs.getInt("codigo"));
                 empresa.setNome(rs.getString("nome"));
+                empresas.add(empresa);
             }
         }catch(SQLException e) {
                 throw e;
             } finally {
                 closeResources(conn, st);
             }
-        return empresa;
+        return empresas;
     }
 }

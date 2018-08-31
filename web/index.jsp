@@ -13,7 +13,7 @@
 
     <h1>Cadastro de Contatos</h1>
     <ul style="list-style: nome">
-        <li><a href="GravarContato.jsp">Gravar Contato</a></li>
+        <li><a href="FrontController?action=LerEmpresa">Gravar Contato</a></li>
         <li><a href="LerContato.jsp">Ler Contato</a></li>
         <li><a href="ApagarContato.jsp">Apagar Contato</a></li>
         <li><a href="GravarEmpresa.jsp">Gravar Empresa</a></li>
